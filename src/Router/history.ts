@@ -37,6 +37,7 @@ function getNextLocation(to: string, state: State = null) {
 
 function push(to: string, state?: State) {
   location = getNextLocation(to, state);
+  window.history.pushState(state, '', to);
   listeners.forEach(fn => fn(location));
 }
 

@@ -12,7 +12,7 @@ const Links = () => {
   };
 
   return (
-    <div className="demo">
+    <div>
       <button onClick={() => go('/foo')}>foo</button>
       <button onClick={() => go('/bar')}>bar</button>
     </div>
