@@ -1,7 +1,21 @@
-import { Router, Route, useHistory } from './Router';
+import { Router, Route, useHistory } from "./Router";
 
-const Foo = () => <div>foo</div>;
-const Bar = () => <div>bar</div>;
+const Home = () => {
+  const history = useHistory();
+
+  const go = (path: string) => {
+    const state = { name: path };
+    history.push(path, state);
+  };
+
+  return (
+    <div>
+      我是home页面 <button onClick={() => go("/list")}>list</button>
+    </div>
+  );
+};
+
+const List = () => <div>我是list页面</div>;
 
 const Links = () => {
   const history = useHistory();
@@ -13,8 +27,8 @@ const Links = () => {
 
   return (
     <div>
-      <button onClick={() => go('/foo')}>foo</button>
-      <button onClick={() => go('/bar')}>bar</button>
+      <button onClick={() => go('/index')}>index</button>
+      <button onClick={() => go('/list')}>list</button>
     </div>
   );
 };
@@ -24,11 +38,11 @@ export default () => {
     <div>
       <Router>
         <Links />
-        <Route path="/foo">
-          <Foo />
+        <Route path="/index">
+          <Home />
         </Route>
-        <Route path="/bar">
-          <Bar />
+        <Route path="/list">
+          <List />
         </Route>
       </Router>
     </div>

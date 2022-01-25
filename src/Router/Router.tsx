@@ -12,8 +12,8 @@ export const RouterContext = React.createContext<RouterContextProps | null>(
 export const Router: React.FC = ({ children }) => {
   const [location, setLocation] = useState(history.location);
   useEffect(() => {
-    const unlisten = history.listen(location => {
-      setLocation(location);
+    const unlisten = history.listen((local) => {
+      setLocation(local);
     });
     return unlisten;
   }, []);
